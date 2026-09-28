@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kada DZ Store</title>
+<style>
+:root{
+  --primary:#176b87;
+  --primary-dark:#0e4f66;
+  --accent:#f4a261;
+  --bg:#f4f7f9;
+  --card:#ffffff;
+  --text:#18323d;
+  --muted:#71838c;
+  --border:#e3eaee;
+  --shadow:0 8px 24px rgba(24,50,61,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Segoe UI",Tahoma,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.container{width:min(1180px,92%);margin:auto}
+
+/* Header */
+header{
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  color:#fff;
+  position:sticky;
+  top:0;
+  z-index:20;
+  box-shadow:0 3px 15px rgba(0,0,0,.12);
+}
+.nav{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+.logo{
+  font-size:25px;
+  font-weight:800;
+  white-space:nowrap;
+}
+.logo span{color:var(--accent)}
+.nav-links{
+  display:flex;
+  gap:20px;
+  margin-right:auto;
+}
+.nav-links a{opacity:.92;font-size:15px}
+.nav-links a:hover{color:#ffd7b5}
+.post-btn{
+  background:var(--accent);
+  color:#26333a;
+  border:0;
+  padding:11px 18px;
+  border-radius:10px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* Hero */
+.hero{
+  background:linear-gradient(135deg,#e9f5f8,#f9eee5);
+  padding:44px 0 34px;
+}
+.hero h1{font-size:34px;margin-bottom:9px}
+.hero p{color:var(--muted);margin-bottom:25px}
+.search{
+  display:grid;
+  grid-template-columns:1fr 190px 130px;
+  background:#fff;
+  padding:7px;
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  max-width:900px;
+}
+.search input,.search select{
+  border:0;
+  outline:0;
+  padding:13px 15px;
+  background:#fff;
+  color:var(--text);
+}
+.search select{border-right:1px solid var(--border)}
+.search button{
+  border:0;
+  border-radius:10px;
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
+  font-weight:700;
+}
+
+/* Categories */
+.section{padding:35px 0}
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+.section-title h2{font-size:23px}
+.section-title a{color:var(--primary);font-size:14px}
+.categories{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:14px;
+}
+.category{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:19px 10px;
+  text-align:center;
+  transition:.2s;
+}
+.category:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.icon{
+  width:48px;height:48px;margin:0 auto 10px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:#e8f4f7;
+  font-size:23px;
+}
+.category strong{font-size:14px}
+.category small{display:block;color:var(--muted);margin-top:5px}
+
+/* Products */
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+.card{
+  background:#fff;
+  border-radius:15px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:0 3px 12px rgba(24,50,61,.04);
+  transition:.2s;
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.photo{
+  height:185px;
+  background:linear-gradient(135deg,#dceef2,#f6e7dc);
+  display:grid;
+  place-items:center;
+  font-size:55px;
+  position:relative;
+}
+.badge{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:var(--accent);
+  color:#26333a;
+  padding:5px 9px;
+  border-radius:7px;
+  font-size:11px;
+  font-weight:800;
+}
+.card-body{padding:14px}
+.card h3{font-size:16px;margin-bottom:9px}
+.price{font-size:18px;font-weight:800;color:var(--primary)}
+.location{font-size:12px;color:var(--muted);margin-top:8px}
+.meta{
+  display:flex;
+  justify-content:space-between;
+  margin-top:12px;
+  padding-top:10px;
+  border-top:1px solid var(--border);
+  font-size:11px;
+  color:var(--muted);
+}
+
+/* Promo */
+.promo{
+  background:var(--primary);
+  color:#fff;
+  border-radius:18px;
+  padding:27px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+.promo h2{margin-bottom:6px}
+.promo p{opacity:.8;font-size:14px}
+.promo button{
+  border:0;
+  background:#fff;
+  color:var(--primary-dark);
+  padding:11px 20px;
+  border-radius:9px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* Footer */
+footer{
+  margin-top:30px;
+  background:#122d38;
+  color:#d9e4e8;
+  padding:35px 0 20px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:30px;
+}
+footer h3{color:#fff;margin-bottom:13px}
+footer p,footer a{font-size:13px;color:#aebfc5;line-height:2}
+.copyright{
+  margin-top:25px;
+  padding-top:15px;
+  border-top:1px solid rgba(255,255,255,.1);
+  text-align:center;
+  font-size:12px;
+  color:#8ea5ad;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .categories{grid-template-columns:repeat(3,1fr)}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .nav{min-height:64px}
+  .logo{font-size:21px}
+  .post-btn{padding:9px 12px;font-size:12px}
+  .hero h1{font-size:27px}
+  .search{grid-template-columns:1fr}
+  .search select{border-right:0;border-top:1px solid var(--border)}
+  .search button{padding:12px}
+  .categories{grid-template-columns:repeat(2,1fr)}
+  .products{grid-template-columns:1fr}
+  .promo{flex-direction:column;text-align:center}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">Kada <span>DZ</span> Store</div>
+    <nav class="nav-links">
+      <a href="#home">الرئيسية</a>
+      <a href="#categories">التصنيفات</a>
+      <a href="#ads">الإعلانات</a>
+      <a href="#about">من نحن</a>
+    </nav>
+    <button class="post-btn" onclick="alert('سيتم فتح نموذج إضافة إعلان هنا')">＋ أضف إعلانك</button>
+  </div>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div class="container">
+    <h1>اكتشف ما تبحث عنه في الجزائر</h1>
+    <p>ابحث عن السيارات، العقارات، الإلكترونيات، والخدمات في مكان واحد.</p>
+    <div class="search">
+      <input id="searchInput" type="text" placeholder="ماذا تبحث عنه؟ مثال: هاتف، سيارة، شقة...">
+      <select id="categorySelect">
+        <option value="">كل التصنيفات</option>
+        <option>سيارات</option>
+        <option>عقارات</option>
+        <option>هواتف وإلكترونيات</option>
+        <option>منزل وأثاث</option>
+        <option>ملابس</option>
+        <option>خدمات</option>
+      </select>
+      <button onclick="searchAds()">بحث</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="categories">
+<div class="container">
+  <div class="section-title">
+    <h2>التصنيفات الرئيسية</h2>
+    <a href="#">عرض الكل ←</a>
+  </div>
+  <div class="categories">
+    <a class="category" href="#ads"><div class="icon">🚗</div><strong>سيارات</strong><small>1,240 إعلان</small></a>
+    <a class="category" href="#ads"><div class="icon">🏠</div><strong>عقارات</strong><small>890 إعلان</small></a>
+    <a class="category" href="#ads"><div class="icon">📱</div><strong>هواتف</strong><small>2,130 إعلان</small></a>
+    <a class="category" href="#ads"><div class="icon">💻</div><strong>إلكترونيات</strong><small>1,570 إعلان</small></a>
+    <a class="category" href="#ads"><div class="icon">🛋️</div><strong>منزل وأثاث</strong><small>740 إعلان</small></a>
+    <a class="category" href="#ads"><div class="icon">🛠️</div><strong>خدمات</strong><small>520 إعلان</small></a>
+  </div>
+</div>
+</section>
+
+<section class="section" id="ads">
+<div class="container">
+  <div class="section-title">
+    <h2>إعلانات مميزة</h2>
+    <a href="#">كل الإعلانات ←</a>
+  </div>
+
+  <div class="products" id="products">
+    <article class="card" data-category="سيارات" data-title="Renault Clio 4 2018">
+      <div class="photo">🚘<span class="badge">مميز</span></div>
+      <div class="card-body">
+        <h3>Renault Clio 4 2018</h3>
+        <div class="price">2,450,000 دج</div>
+        <div class="location">📍 تلمسان</div>
+        <div class="meta"><span>منذ ساعتين</span><span>👁 128</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-category="هواتف وإلكترونيات" data-title="iPhone 15 Pro Max">
+      <div class="photo">📱<span class="badge">جديد</span></div>
+      <div class="card-body">
+        <h3>iPhone 15 Pro Max 256GB</h3>
+        <div class="price">185,000 دج</div>
+        <div class="location">📍 الجزائر العاصمة</div>
+        <div class="meta"><span>منذ 3 ساعات</span><span>👁 246</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-category="عقارات" data-title="شقة F3 للبيع">
+      <div class="photo">🏢<span class="badge">مميز</span></div>
+      <div class="card-body">
+        <h3>شقة F3 للبيع — موقع ممتاز</h3>
+        <div class="price">12,800,000 دج</div>
+        <div class="location">📍 وهران</div>
+        <div class="meta"><span>منذ 5 ساعات</span><span>👁 94</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-category="إلكترونيات" data-title="Gaming PC">
+      <div class="photo">🖥️</div>
+      <div class="card-body">
+        <h3>Gaming PC — RTX 4060</h3>
+        <div class="price">175,000 دج</div>
+        <div class="location">📍 سيدي بلعباس</div>
+        <div class="meta"><span>منذ يوم</span><span>👁 181</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-category="منزل وأثاث" data-title="Salon moderne">
+      <div class="photo">🛋️</div>
+      <div class="card-body">
+        <h3>صالون عصري بحالة ممتازة</h3>
+        <div class="price">95,000 دج</div>
+        <div class="location">📍 تلمسان</div>
+        <div class="meta"><span>منذ يوم</span><span>👁 73</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-category="سيارات" data-title="Peugeot 208">
+      <div class="photo">🚙</div>
+      <div class="card-body">
+        <h3>Peugeot 208 — موديل 2020</h3>
+        <div class="price">3,150,000 دج</div>
+        <div class="location">📍 وهران</div>
+        <div class="meta"><span>منذ يومين</span><span>👁 310</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-category="هواتف وإلكترونيات" data-title="Samsung Galaxy S24">
+      <div class="photo">📲<span class="badge">جديد</span></div>
+      <div class="card-body">
+        <h3>Samsung Galaxy S24 Ultra</h3>
+        <div class="price">165,000 دج</div>
+        <div class="location">📍 البليدة</div>
+        <div class="meta"><span>منذ 3 أيام</span><span>👁 202</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-category="خدمات" data-title="تصميم مواقع">
+      <div class="photo">💻</div>
+      <div class="card-body">
+        <h3>تصميم مواقع إلكترونية احترافية</h3>
+        <div class="price">ابتداءً من 25,000 دج</div>
+        <div class="location">📍 خدمة عن بعد</div>
+        <div class="meta"><span>منذ 3 أيام</span><span>👁 156</span></div>
+      </div>
+    </article>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="promo">
+    <div>
+      <h2>لديك شيء للبيع؟</h2>
+      <p>انشر إعلانك ووصل إلى آلاف المشترين في الجزائر.</p>
+    </div>
+    <button onclick="alert('نموذج إضافة الإعلان سيكون هنا')">أضف إعلانًا الآن</button>
+  </div>
+</div>
+</section>
+</main>
+
+<footer id="about">
+<div class="container">
+  <div class="footer-grid">
+    <div>
+      <h3>Kada DZ Store</h3>
+      <p>منصة جزائرية للإعلانات المبوبة، مصممة لتسهيل البيع والشراء والتواصل بين المستخدمين.</p>
+    </div>
+    <div>
+      <h3>روابط</h3>
+      <a href="#home">الرئيسية</a><br>
+      <a href="#categories">التصنيفات</a><br>
+      <a href="#ads">الإعلانات</a>
+    </div>
+    <div>
+      <h3>التصنيفات</h3>
+      <a href="#ads">سيارات</a><br>
+      <a href="#ads">عقارات</a><br>
+      <a href="#ads">إلكترونيات</a>
+    </div>
+    <div>
+      <h3>المساعدة</h3>
+      <a href="#">اتصل بنا</a><br>
+      <a href="#">الشروط والأحكام</a><br>
+      <a href="#">الخصوصية</a>
+    </div>
+  </div>
+  <div class="copyright">© 2026 Kada DZ Store — جميع الحقوق محفوظة</div>
+</div>
+</footer>
+
+<script>
+function searchAds(){
+  const text = document.getElementById("searchInput").value.trim().toLowerCase();
+  const category = document.getElementById("categorySelect").value;
+  const cards = document.querySelectorAll(".card");
+  let found = 0;
+
+  cards.forEach(card => {
+    const title = card.dataset.title.toLowerCase();
+    const cat = card.dataset.category;
+    const matchText = !text || title.includes(text);
+    const matchCategory = !category || cat === category;
+    card.style.display = (matchText && matchCategory) ? "" : "none";
+    if(matchText && matchCategory) found++;
+  });
+
+  document.getElementById("ads").scrollIntoView({behavior:"smooth"});
+  if(found === 0) setTimeout(()=>alert("لم يتم العثور على إعلانات مطابقة لبحثك."), 350);
+}
+
+document.getElementById("searchInput").addEventListener("keydown", e => {
+  if(e.key === "Enter") searchAds();
+});
+</script>
+
+</body>
+</html>
